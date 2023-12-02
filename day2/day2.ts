@@ -33,20 +33,21 @@ const parseLineToGame = (line: string): Game => {
   };
 };
 
-const solvePart1 = (games: Game[]) => {
+const isValid = (hand: RevealedCubes) => {
   const maxRed = 12;
   const maxBlue = 14;
   const maxGreen = 13;
 
+  return hand.red <= maxRed && hand.blue <= maxBlue && hand.green <= maxGreen;
+};
+
+const solvePart1 = (games: Game[]) => {
   const parsedGames = games.map((game) => {
-    const invalidHands = game.revealedCubes.map(
-      (hand) =>
-        hand.red <= maxRed && hand.blue <= maxBlue && hand.green <= maxGreen
-    );
+    const invalidHands = game.revealedCubes.filter((hand) => !isValid(hand));
 
     return {
       ...game,
-      valid: invalidHands.filter((x) => x === false).length === 0,
+      valid: invalidHands.length === 0,
     };
   });
 
