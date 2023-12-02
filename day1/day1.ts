@@ -45,8 +45,6 @@ const solvePart2 = (lines: string[]) => {
   });
 };
 
-const input1 = fs.readFileSync("day1/input.txt", "utf8").split("\n");
-console.log(solvePart1(input1));
-
-const input2 = fs.readFileSync("day1/input2.txt", "utf8").split("\n");
-console.log(solvePart1(solvePart2(input2)));
+const input = fs.readFileSync("day1/input.txt", "utf8").split("\n");
+console.log(solvePart1(input));
+console.log(solvePart1(solvePart2(input)));
