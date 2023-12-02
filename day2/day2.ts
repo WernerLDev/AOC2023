@@ -70,7 +70,7 @@ const solvePart2 = (games: Game[]) => {
 };
 
 const input = fs.readFileSync("day2/input.txt", "utf8").split("\n");
-const games = input.map((x) => parseLineToGame(x));
+const games = input.map(parseLineToGame);
 
 console.log(solvePart1(games));
 console.log(solvePart2(games));
