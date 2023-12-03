@@ -110,7 +110,6 @@ const solvePart2 = (lines: string[]) => {
   return sumOfGears;
 };
 
-const testinput = fs.readFileSync("day3/testinput.txt", "utf8").split("\n");
 const input = fs.readFileSync("day3/input.txt", "utf8").split("\n");
 console.log(solvePart1(input));
 console.log(solvePart2(input));
