@@ -41,7 +41,6 @@ const solvePart1 = (input: string[]) => {
   return input
     .map((line) => {
       const card = parseLine(line);
-      console.log(card);
       return getPointsForCard(card);
     })
     .reduce((a, b) => a + b);
