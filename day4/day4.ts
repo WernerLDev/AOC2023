@@ -10,11 +10,13 @@ const parseLine = (line: string): Card => {
   const values = /^Card\s+(\d+)\: (.+)\ \|\ (.+)/g.exec(line);
 
   const winningNumbers = (values?.[2] ?? "")
-    .split(" ")
-    .map((x) => parseInt(x.trim()));
+    .trim()
+    .split(/\s+/)
+    .map((x) => parseInt(x));
   const scratchedNumbers = (values?.[3] ?? "")
-    .split(" ")
-    .map((x) => parseInt(x.trim()));
+    .trim()
+    .split(/\s+/)
+    .map((x) => parseInt(x));
 
   return {
     cardId: values?.[1] ?? "-1",
@@ -39,6 +41,7 @@ const solvePart1 = (input: string[]) => {
   return input
     .map((line) => {
       const card = parseLine(line);
+      console.log(card);
       return getPointsForCard(card);
     })
     .reduce((a, b) => a + b);
@@ -70,10 +73,7 @@ const solvePart2 = (input: string[]) => {
   );
 };
 
-const input = fs
-  .readFileSync("day4/input.txt", "utf8")
-  .replaceAll("  ", " ")
-  .split("\n");
+const input = fs.readFileSync("day4/input.txt", "utf8").split("\n");
 console.log(solvePart1(input));
 
 console.log(solvePart2(input));
