@@ -90,4 +90,7 @@ const input = fs.readFileSync("day5/input.txt", "utf8").split("\n\n");
 const parsedInput = parseInput(input);
 
 console.log(solvePart1(parsedInput));
+const start = performance.now();
 console.log(solvePart2(parsedInput));
+const end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
