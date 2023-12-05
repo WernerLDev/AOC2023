@@ -72,7 +72,9 @@ const solvePart2 = (input: string[]) => {
   );
 };
 
+const start = performance.now();
 const input = fs.readFileSync("day4/input.txt", "utf8").split("\n");
 console.log(solvePart1(input));
-
 console.log(solvePart2(input));
+const end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
