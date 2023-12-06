@@ -55,5 +55,8 @@ const solvePart2 = (input: string[]) => {
 const input = fs.readFileSync("day6/input.txt", "utf8").split("\n");
 const parsedInput = parseInput(input);
 
+const start = performance.now();
 console.log(solvePart1(parsedInput));
 console.log(solvePart2(input));
+const end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
