@@ -39,14 +39,16 @@ const solvePart1 = (
 
   while (!isEnd(currentNode)) {
     const node = map.nodes.get(currentNode);
+    if (!node) continue;
+
     let nextInstruction = map.instructions[currentIndex];
     currentIndex =
       currentIndex >= map.instructions.length - 1 ? 0 : currentIndex + 1;
 
     if (nextInstruction === "L") {
-      currentNode = node?.left ?? "";
+      currentNode = node.left;
     } else {
-      currentNode = node?.right ?? "";
+      currentNode = node.right;
     }
 
     stepsTaken++;
