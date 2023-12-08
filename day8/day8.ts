@@ -67,13 +67,11 @@ const lcm = (a: number, b: number) => {
 const solvePart2 = (map: PuzzleMap) => {
   let currentNodes = [...map.nodes.keys()].filter((x) => x.endsWith("A"));
 
-  const nodeLoops = currentNodes
+  return currentNodes
     .map((node) => {
       return solvePart1(map, node, (x) => x.endsWith("Z"));
     })
-    .sort();
-
-  return nodeLoops.reduce((a, b) => lcm(a, b));
+    .reduce((a, b) => lcm(a, b));
 };
 
 const input = fs.readFileSync("day8/input.txt", "utf8");
