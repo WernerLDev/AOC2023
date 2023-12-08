@@ -35,22 +35,6 @@ const StrengthMap = new Map<string, number>([
   ["2", 1],
 ]);
 
-const StrengthMapPart2 = new Map<string, number>([
-  ["A", 13],
-  ["K", 12],
-  ["Q", 11],
-  ["J", 0],
-  ["T", 9],
-  ["9", 8],
-  ["8", 7],
-  ["7", 6],
-  ["6", 5],
-  ["5", 4],
-  ["4", 3],
-  ["3", 2],
-  ["2", 1],
-]);
-
 const parseInput = (input: string[]) => {
   return input.map<Hand>((line) => {
     const values = line.split(/\s+/);
@@ -156,7 +140,7 @@ const solvePart2 = (hands: Hand[]) => {
       type: evaluateHand(hand),
     });
   });
-  return sortHands(handsWithType, StrengthMapPart2)
+  return sortHands(handsWithType, StrengthMap)
     .map((hand, index) => hand.bid * (index + 1))
     .reduce((a, b) => a + b);
 };
@@ -166,6 +150,7 @@ const parsedInput = parseInput(input);
 
 const start = performance.now();
 console.log(solvePart1(parsedInput));
+StrengthMap.set("J", 0);
 console.log(solvePart2(parsedInput));
 const end = performance.now();
 console.log(`Execution time: ${end - start} ms`);
