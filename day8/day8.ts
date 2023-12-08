@@ -33,7 +33,7 @@ const solvePart1 = (
   start: string,
   isEnd: (_: string) => boolean
 ) => {
-  let currentIndex = 0;
+  let currentInstruction = 0;
   let stepsTaken = 0;
   let currentNode = start;
 
@@ -41,16 +41,16 @@ const solvePart1 = (
     const node = map.nodes.get(currentNode);
     if (!node) continue;
 
-    let nextInstruction = map.instructions[currentIndex];
-    currentIndex =
-      currentIndex >= map.instructions.length - 1 ? 0 : currentIndex + 1;
-
-    if (nextInstruction === "L") {
+    if (map.instructions[currentInstruction] === "L") {
       currentNode = node.left;
     } else {
       currentNode = node.right;
     }
 
+    currentInstruction =
+      currentInstruction >= map.instructions.length - 1
+        ? 0
+        : currentInstruction + 1;
     stepsTaken++;
   }
 
