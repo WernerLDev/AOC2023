@@ -37,9 +37,7 @@ const solvePart1 = (
   let stepsTaken = 0;
   let currentNode = start;
 
-  let times = 0;
-
-  while (times < 1) {
+  while (!isEnd(currentNode)) {
     const node = map.nodes.get(currentNode);
     let nextInstruction = map.instructions[currentIndex];
     currentIndex =
@@ -52,10 +50,6 @@ const solvePart1 = (
     }
 
     stepsTaken++;
-
-    if (isEnd(currentNode)) {
-      times++;
-    }
   }
 
   return stepsTaken;
