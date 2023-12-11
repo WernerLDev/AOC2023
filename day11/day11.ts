@@ -52,13 +52,11 @@ const distance = (p1: Position, p2: Position) => {
   return y + x;
 };
 
-const isExpansionArea = (p: Position, grid: string[][]) => {
-  return (
-    !grid[p.y].find((x) => x == "#") && !grid.find((line) => line[p.x] == "#")
-  );
-};
-
-const distance2 = (p1: Position, p2: Position, grid: string[][]) => {
+const distanceWithExpansion = (
+  p1: Position,
+  p2: Position,
+  grid: string[][]
+) => {
   const expansionRate = 1000000 - 1;
 
   let expansions = 0;
@@ -108,7 +106,7 @@ const solvePart2 = (input: string[][]) => {
   const pairs = findPairs(expanded);
 
   return pairs
-    .map((p) => distance2(p[0], p[1], expanded))
+    .map((p) => distanceWithExpansion(p[0], p[1], expanded))
     .reduce((a, b) => a + b);
 };
 
